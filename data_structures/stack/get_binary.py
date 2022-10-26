@@ -1,4 +1,4 @@
-from Stack.stack import Stack
+from stack import Stack
 
 
 def get_binary(stack, number):

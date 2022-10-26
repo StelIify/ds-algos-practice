@@ -22,7 +22,7 @@ class Stack:
         return self._items == []
 
 
-# new_stack = Stack()
+# new_stack = stack()
 # new_stack.push(44)
 # new_stack.push(23)
 # print(new_stack.peek())
