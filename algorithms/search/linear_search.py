@@ -2,10 +2,7 @@ def linear_search_on_ordered_array(array, search_value):
     for index, element in enumerate(array):
         if element == search_value:
             return index
-        elif element > search_value:
-            print('Searched value was not found in the array')
-            break
-    return None
+    return 'Searched value was not found in the array'
 
 
 print(linear_search_on_ordered_array([11, 22, 33, 44, 55], 24))
