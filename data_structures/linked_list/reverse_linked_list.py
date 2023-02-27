@@ -14,6 +14,46 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+    # one way of implementing that
+    # def read(self, index):
+    #     if not self.head:
+    #         return
+    #
+    #     current = self.head
+    #
+    #     for i in range(index):
+    #         if not current.next:
+    #             return None
+    #         current = current.next
+    #     return current
+    def __iter__(self):
+        node = self.head
+        while node is not None:
+            yield node
+            node = node.next
+
+    def read(self, index):
+        if not self.head:
+            return
+        for i, node in enumerate(self):
+            if i == index:
+                return node
+
+    def index(self, value):
+        current = self.head
+        current_index = 0
+        while current is not None:
+            if current.data == value:
+                return current_index
+            current = current.next
+            current_index += 1
+        return None
+
+    def insert(self, node: Node):
+        node.next = self.head
+        self.head = node
+
+
     def __repr__(self):
         node = self.head
         nodes = []
@@ -39,6 +79,8 @@ third_node.next = forth_node
 forth_node.next = fifth_node
 
 print(linked_list)
+print(linked_list.insert(Node("a")))
+print(linked_list)
 
 
 def reverse_list(head: Optional[Node]) -> Optional[Node]:
@@ -57,8 +99,6 @@ def reverse_list(head: Optional[Node]) -> Optional[Node]:
     return previous
 
 
-reverse_list(linked_list.head)
-print(linked_list)
 
 
 
