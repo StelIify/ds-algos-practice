@@ -1,41 +1,17 @@
-from stack import Stack
+# https://leetcode.com/problems/valid-parentheses/
 
-
-def is_paren_balanced(paren_string):
-    stack = Stack()
-    is_balanced = True
-    index = 0
-
-    while index < len(paren_string) and is_balanced:
-        parenthesis = paren_string[index]
-        if parenthesis in "({[":
-            stack.push(parenthesis)
-        else:
-            if stack.is_empty():
-                is_balanced = False
-                break
+def is_valid(string) -> bool:
+    close_to_open = {")": "(", "]": "[", "}": "{"}
+    stack = []
+    for char in string:
+        if char in close_to_open:
+            if stack and stack[-1] == close_to_open[char]:
+                stack.pop()
             else:
-                top = stack.pop()
-                if not is_match(top, parenthesis):
-                    is_balanced = False
-                    break
-        index += 1
-
-    if stack.is_empty() and is_balanced:
-        return True
-    else:
-        return False
+                return False
+        else:
+            stack.append(char)
+    return True if not stack else False
 
 
-def is_match(p1, p2):
-    if p1 == "(" and p2 == ")":
-        return True
-    elif p1 == "{" and p2 == "}":
-        return True
-    elif p1 == "[" and p2 == "]":
-        return True
-    else:
-        return False
-
-
-print(is_paren_balanced("(([]))"))
+print(is_valid(")(){}"))

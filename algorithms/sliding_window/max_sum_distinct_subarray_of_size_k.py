@@ -6,7 +6,7 @@
 #
 # Return the maximum subarray sum of all the subarrays that meet the conditions.
 # If no subarray meets the conditions, return 0.
-# [1,5,4,2,9,9,9,7,6], k = 3
+# [1,5,4,2,9,9,9,7,6], k = 3, expected 15
 
 def max_sum_of_subarray(nums, k):
     current_sum = 0
