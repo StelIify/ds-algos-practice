@@ -14,4 +14,4 @@ def is_valid(string) -> bool:
     return True if not stack else False
 
 
-print(is_valid(")(){}"))
+print(is_valid("()(){}"))

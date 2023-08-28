@@ -18,4 +18,7 @@ class Queue:
     def dequeue(self):
         return self._elements.popleft()
 
+    def clear(self):
+        self._elements.clear()
+
 

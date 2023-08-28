@@ -27,5 +27,24 @@ def three_sum(nums: List[int]) -> List[List[int]]:
     return triplets
 
 
+def find_sum_of_three(nums, target):
+    nums.sort()
+    for index, value in enumerate(nums):
+        l = index + 1
+        r = len(nums) - 1
+        while l < r:
+            sum = value + nums[l] + nums[r]
+            if sum == target:
+                return True
+            elif sum > 0:
+                r -= 1
+            else:
+                l += 1
+    return False
+
+
 # print(three_sum([-1, 0, 1, 2, -1, -4]))
-print(three_sum([-1, 0, 1, 2, -1, -4]))
+
+# print(find_sum_of_three([3, 7, 1, 2, 8, 4, 5], 10))
+
+print(find_sum_of_three([-1, 0, 1, 2, -1, -4], 0))

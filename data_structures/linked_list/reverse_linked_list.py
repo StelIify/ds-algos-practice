@@ -117,21 +117,15 @@ class LinkedList:
     def find_mid(self):
         if not self.head:
             return None
-        current = self.head
-        if not current.next:
-            return current
         # Move mid_node (Slower) one step at a time
         # Move current_node (Faster) two steps at a time
         # When current_node reaches at end, mid_node will be at the middle of List
-        mid_node = current
-        current = current.next.next
-        while current:
-            mid_node = mid_node.next
-            current = current.next
-            if current:
-                current = current.next
-        if mid_node:
-            return mid_node
+        slow, fast = self.head, self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        if slow:
+            return slow
         return None
 
     # def remove_duplicates(self):
@@ -167,6 +161,18 @@ class LinkedList:
                 prev = current
                 current = current.next
 
+    def detect_cycle(self):
+        if not self.head:
+            return False
+
+        slow, fast = self.head, self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
     def __repr__(self):
         node = self.head
         nodes = []
@@ -199,6 +205,7 @@ print(linked_list.delete_by_value("E"))
 print(linked_list.delete_by_value("B"))
 # linked_list.remove_duplicates()
 print(linked_list)
+print(linked_list.detect_cycle())
 
 
 def reverse_list(head: Optional[Node]) -> Optional[Node]:
